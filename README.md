@@ -43,14 +43,15 @@ copy .env.example .env
 | `TELEGRAM_BOT_TOKEN` | Token del bot, obtenido desde BotFather |
 | `SCIBOT_USERNAME` | Usuario de sci-bot.ru |
 | `SCIBOT_PASSWORD` | Contraseña de sci-bot.ru |
+| `ALLOWED_USER_ID` | ID numérico de Telegram del único usuario autorizado |
 
 El archivo `.env` no se sube al repositorio. Nunca compartas tokens ni contraseñas.
 
 ### Acceso restringido
 
-Solo responde al usuario de Telegram cuyo ID está definido en `ALLOWED_USER_ID` dentro de `telegram_bot.py`. Cualquier otro usuario es ignorado silenciosamente.
+Solo responde al usuario cuyo ID coincide con `ALLOWED_USER_ID` en `.env`. Cualquier otro usuario es ignorado silenciosamente.
 
-Para usar el bot con tu cuenta, cambia ese valor por tu ID numérico de Telegram (puedes obtenerlo con bots como [@userinfobot](https://t.me/userinfobot)).
+Puedes obtener tu ID con bots como [@userinfobot](https://t.me/userinfobot).
 
 ### Proxy de Telegram
 
@@ -140,7 +141,7 @@ telegram_bot.py
 
 | Síntoma | Posible causa |
 |---|---|
-| El bot no responde | Tu ID de Telegram no coincide con `ALLOWED_USER_ID` |
+| El bot no responde | Tu ID de Telegram no coincide con `ALLOWED_USER_ID` en `.env` |
 | `Error de sci-bot: Login fallido` | Usuario o contraseña incorrectos en `.env` |
 | `Tiempo de espera agotado` | sci-bot.ru tardó más de 180 s; reintenta |
 | Error al conectar con Telegram | Proxy SOCKS5 no activo o token inválido |

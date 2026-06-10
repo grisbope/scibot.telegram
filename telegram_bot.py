@@ -19,6 +19,7 @@ load_dotenv()
 TELEGRAM_BOT_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
 SCIBOT_USERNAME = os.environ["SCIBOT_USERNAME"]
 SCIBOT_PASSWORD = os.environ["SCIBOT_PASSWORD"]
+ALLOWED_USER_ID = int(os.environ["ALLOWED_USER_ID"])
 
 LOG_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "bot.log")
 logging.basicConfig(
@@ -27,10 +28,6 @@ logging.basicConfig(
     handlers=[logging.FileHandler(LOG_FILE, encoding="utf-8")],
 )
 logger = logging.getLogger(__name__)
-
-TELEGRAM_MAX_LEN = 4000
-ALLOWED_USER_ID = 1148813370
-
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     if update.effective_user.id != ALLOWED_USER_ID:
